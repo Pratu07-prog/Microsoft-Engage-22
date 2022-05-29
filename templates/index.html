@@ -1,0 +1,209 @@
+{% load static %}
+{% static "images" as baseURL %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+	<!--Google Font-->
+	<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+	<!--preloading-->
+	<div id="preloader">
+		<img class="logo" src="{% static 'images/Microsoft_Tv.png' %}" width="100" height="45">
+		<div id="status">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--end of preloading-->
+
+	<!-- BEGIN | Header -->
+	<header class="ht-header full-width-hd">
+		<div class="row">
+			<nav id="mainNav" class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+					<div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+					<a> <img class="logo" src="{% static 'images/Microsoft_Tv.png' %}" alt="" width="119"
+							height="58"></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li>
+							<a href="/" class="btn btn-default lv1"> Home </a>
+						</li>
+						<li>
+							<a href="movie" class="btn btn-default lv1"> Movies </a>
+						</li>
+
+						
+						
+						{% if user.is_authenticated %}
+						<li><a href="accounts/userprofile">Hello, {{user.first_name}}</a></li>
+						{% else %}	
+						<li class=""><a href="accounts/login">LOG In</a></li>
+						<li class="btn"><a href="accounts/register">Register</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+		</div>
+
+	</header>
+	<!-- END | Header -->
+
+	<div class="slider sliderv2">
+		<div class="container">
+			<div class="row">
+				<div class="slider-single-item">
+					<div class="movie-item">
+						<div class="row">
+							<div class="col-md-8 col-sm-12 col-xs-12">
+								<div class="title-in">
+									<div class="cate">
+										<span class="yell"><a href="#">Action</a></span>
+										<span class="orange"><a href="#">Drama</a></span>
+									</div>
+									<h1><a href="#">Top Gun: Maverick</a></h1>
+									<h2><a href="#">2022</a></h2>
+						
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+								<div class="mv-img-2">
+									<a href="#"><img src="{% static 'images/topgun.jpg' %}" alt="" style="height:500px"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="movie-item">
+						<div class="row">
+							<div class="col-md-8 col-sm-12 col-xs-12">
+								<div class="title-in">
+									<div class="cate">
+										<span class="blue"><a href="#">Horror</a></span>
+										<span class="yell"><a href="#">Comedy</a></span>
+									</div>
+									<h1><a href="#">Bhool Bhulaiyaa 2</a></h1>
+									<h2><a href="#">2022</a></h2>
+
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12" >
+								<div class="mv-img-2">
+									<a href="#"><img src="{% static 'images/bhool.jpg' %}" alt="" style="height:500px"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if user.is_authenticated %}
+		<div style="background-image: url('{% static 'images/uploads/error-bg.jpg' %}'); height: 400px; padding-left:160px; ">
+			<h1 style="color: white; padding: 2px 2px margin-left: 5px">Recommendations for You</h1>
+			<br>
+			<div class="flex-wrap-movielist">
+				{% for cinema_list in cinema_lists %}
+				<div class="movie-item-style-2 movie-item-style-1">
+					<h2>{{cinema.img}}</h2>
+				<img src="{{baseURL}}/{{cinema_list.img}}" alt="">
+					<div class="hvr-inner">
+						<a  href="{{cinema_list.url}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					</div>
+					<div class="mv-item-infor">
+						<h6><a href="#">{{cinema_list.Title}}</a></h6>
+						<p class="rate"><i class="ion-android-star"></i><span>{{cinema_list.Rating_average}}</span> /10</p>
+					</div>
+				</div>	
+				{% endfor %}
+			</div>
+		</div>
+
+	{% endif %}
+
+
+	<!-- latest new v1 section-->
+<div class="latestnew">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-8">
+				<div class="title-hd">
+					<h2>Latest news</h2>
+				</div>
+				<div class="tabs">
+				    <div class="tab-content">
+				        <div id="tab31" class="tab active"> 
+								
+				            <div class="row">
+				            	<div class="blog-item-style-1">
+				            		<img src="{{first.urlToImage}}" alt="" width="170" height="250">
+				            		<div class="blog-it-infor">
+				            			<h3><a href="{{first.url}}">{{first.title}}</a></h3>
+				            			<span class="time">{{first.publishedAt}}</span>
+				            			<p>{{first.description}}</p>
+				            		</div>
+				            	</div>
+				            </div>
+				        </div>
+				</div>
+
+				<div class="morenew">
+					<div class="title-hd" style="padding-top:10px; margin-top:10px">
+						<h3>More news on Blockbuster</h3>
+					</div>
+					<div class="more-items">
+						<div class="left">
+							{% for left in left_articles %}
+							<div class="more-it">
+								<h6><a href="{{left.url}}">{{left.title}}</a></h6>
+								<span class="time">{{left.publishedAt}}</span>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="right">
+							{% for right in right_articles %}
+							<div class="more-it">
+								<h6><a href="{{right.url}}">{{right.title}}</a></h6>
+								<span class="time">{{right.publishedAt}}</span>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+	<script src="{% static 'js/plugins2.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+{% load static %}
+{% static "images" as baseURL %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+	<!--Google Font-->
+	<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+	<!--preloading-->
+	<div id="preloader">
+		<img class="logo" src="{% static 'images/Microsoft_Tv.png' %}" width="100" height="45">
+		<div id="status">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--end of preloading-->
+
+	<!-- BEGIN | Header -->
+	<header class="ht-header full-width-hd">
+		<div class="row">
+			<nav id="mainNav" class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+					<div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+					<a> <img class="logo" src="{% static 'images/Microsoft_Tv.png' %}" alt="" width="119"
+							height="58"></a>
+				</div>
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						<li>
+							<a href="/" class="btn btn-default lv1"> Home </a>
+						</li>
+						<li>
+							<a href="movie" class="btn btn-default lv1"> Movies </a>
+						</li>
+
+						
+						{% if user.is_authenticated %}
+						<li><a href="accounts/userprofile">Hello, {{user.first_name}}</a></li>
+						{% else %}	
+						<li class=""><a href="accounts/login">LOG In</a></li>
+						<li class="btn"><a href="accounts/register">Register</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+			<!-- search form -->
+		</div>
+</header>
+<!-- END | Header -->
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>{{user.first_name}} profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="/">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					
+					<div class="user-fav">
+						<p>Account Details</p>
+						<ul>
+							<li><a href="userfavoritelist.html">Favorite movies</a></li>
+							<li><a href="userrate.html">Rated movies</a></li>
+						</ul>
+					</div>
+					<div class="user-fav">
+						<p>Others</p>
+						<ul>
+							<li><a href="logout">Log out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="form-style-1 user-pro" action="#">
+					<form action="#" class="user">
+						<h4>01. Profile details</h4>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Username</label>
+								<h4>{{user.username}}</h4>
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Email Address</label>
+								<h4>{{user.email}}</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>First Name</label>
+								<h4>{{user.first_name}}</h4>
+							</div>
+							<div class="col-md-6 form-it">
+								<label>Last Name</label>
+								<h4>{{user.last_name}}</h4>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer section-->
+<footer class="ht-footer">
+	<div class="container">
+		<div class="flex-parent-ft">
+			<div class="flex-child-ft item1">
+				 <a href="index-2.html"><img class="logo" src="{% static 'images/Microsoft_Tv.png' %}" alt=""></a>
+				 <p>5th Avenue st, manhattan<br>
+				New York, NY 10001</p>
+				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+			</div>
+			<div class="flex-child-ft item2">
+				<h4>Resources</h4>
+				<ul>
+					<li><a href="#">About</a></li> 
+					<li><a href="#">Blockbuster</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Forums</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Help Center</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item3">
+				<h4>Legal</h4>
+				<ul>
+					<li><a href="#">Terms of Use</a></li> 
+					<li><a href="#">Privacy Policy</a></li>	
+					<li><a href="#">Security</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item4">
+				<h4>Account</h4>
+				<ul>
+					<li><a href="#">My Account</a></li> 
+					<li><a href="#">Watchlist</a></li>	
+					<li><a href="#">Collections</a></li>
+					<li><a href="#">User Guide</a></li>
+				</ul>
+			</div>
+			<div class="flex-child-ft item5">
+				<h4>Newsletter</h4>
+				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
+				<form action="#">
+					<input type="text" placeholder="Enter your email...">
+				</form>
+				<a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="ft-copyright">
+		<div class="ft-left">
+			<p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+		</div>
+		<div class="backtotop">
+			<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
+		</div>
+	</div>
+</footer>
+<!-- end of footer section-->
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/plugins2.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+<!-- userprofile14:04-->
+</html>
