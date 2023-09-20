@@ -75,13 +75,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Microsoft_Engage',
+#         'USER': 'postgres',
+#         'PASSWORD': '5678',
+#         'HOST': 'localhost'
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Microsoft_Engage',
-        'USER': 'postgres',
-        'PASSWORD': '5678',
-        'HOST': 'localhost'
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
 

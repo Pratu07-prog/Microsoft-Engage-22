@@ -12,3 +12,6 @@ class movies(models.Model):
     img = models.TextField(max_length=300)
     url = models.URLField(max_length=300)
 
+    def __str__(self):
+        return self.Title   
+

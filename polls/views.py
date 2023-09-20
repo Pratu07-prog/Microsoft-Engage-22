@@ -210,7 +210,7 @@ def recommend_on_choice(obj):
             choices = user
             break
     
-    print (choices)
+    # print (choices)
     df1 = movies.objects.filter(Genres = choices['fav_genre']).values()
     df2 = movies.objects.filter(Actor = choices['fav_actor']).values()
     df3 = movies.objects.filter(Actress = choices['fav_actress']).values()
